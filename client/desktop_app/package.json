@@ -1,0 +1,22 @@
+{
+  "name": "Client for Lotus GmbH API",
+  "version": "1.0.0",
+  "description": "A minimal Electron application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "Tommy31",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^20.1.0"
+  }
+}
