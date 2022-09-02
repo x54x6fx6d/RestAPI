@@ -25,7 +25,7 @@ app.get("/api/post/webhook/sendMessage/:content/:id/:token", (req, res) => {
 
 app.get("/api/post/minecraft/startServer/:username", (req, res) => {
     let username = req.params.username;
-    webhook.sendMessage(config.logWebhookId, config.logWebhookToken, username + "hat den Server gestartet!");
+    webhook.sendMessage(config.logWebhookId, config.logWebhookToken, username + " hat den Server gestartet!");
     let command = "screen -S minecraftServer -dm java -jar /home/ehlol/spigot-1.19.2.jar";
     ChildProcess.exec(command);
     
@@ -34,7 +34,7 @@ app.get("/api/post/minecraft/startServer/:username", (req, res) => {
 
 app.get("api/post/minecraft/stopServer/:username", (req, res)=> {
     let username = req.params.username;
-    webhook.sendMessage(config.logWebhookId, config.logWebhookToken, username + "hat den Server gestoppt!");
+    webhook.sendMessage(config.logWebhookId, config.logWebhookToken, username + " hat den Server gestoppt!");
 });
 
 app.get("/api/post/webhook/editName/:name/:id/:token", (req, res) => {
