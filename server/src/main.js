@@ -45,6 +45,8 @@ app.get("/api/post/webhook/editName/:name/:id/:token", (req, res) => {
     res.send(`Edited webhook name to ${name}!`);
 });
 
+app.get("/api/post")
+
 app.listen(port, () => {
     console.log("Listening on http://localhost:" + port + "/");
 });
