@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 .App {
   text-align: center;
 }
 
 .App-logo {
+  display: none;
   height: 40vmin;
   pointer-events: none;
 }
@@ -35,4 +38,28 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+#dev-site {
+  position: absolute;
+  top: 40px;
+  color: #f4f4f4;
+  font-size: 50px;
+  font-family: "Lobster", cursive;
+}
+
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #bef0ff, 0 0 30px #89e4ff, 0 0 40px #6dddfe, 0 0 50px #2ecfff, 0 0 60px #0bc7ff, 0 0 70px #00b2e7;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #bef0ff, 0 0 40px #89e4ff, 0 0 50px #6dddfe, 0 0 60px #2ecfff, 0 0 70px #0bc7ff, 0 0 80px #00b2e7;
+  }
+}
+
+#dev-site:hover {
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
 }
