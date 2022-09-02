@@ -4,6 +4,7 @@ const url = require("url");
 const querystring = require("querystring");
 const webhook = require("./webhook/webhook");
 const ChildProcess = require("child_process");
+const config = require("./utils/config.json");
 
 const spawn = require("node:child_process");
 
@@ -22,11 +23,18 @@ app.get("/api/post/webhook/sendMessage/:content/:id/:token", (req, res) => {
     res.send(`Sent message : ${content} with webhook id : ${id}`);
 });
 
-app.get("/api/post/minecraft/startServer", (req, res) => {
+app.get("/api/post/minecraft/startServer/:username", (req, res) => {
+    let username = req.params.username;
+    webhook.sendMessage(config.logWebhookId, config.logWebhookToken, username + " hat den Server gestartet!");
     let command = "screen -S minecraftServer -dm java -jar /home/ehlol/spigot-1.19.2.jar";
     ChildProcess.exec(command);
     
     res.send("startet den server...");
+});
+
+app.get("api/post/minecraft/stopServer/:username", (req, res)=> {
+    let username = req.params.username;
+    webhook.sendMessage(config.logWebhookId, config.logWebhookToken, username + " hat den Server gestoppt!");
 });
 
 app.get("/api/post/webhook/editName/:name/:id/:token", (req, res) => {
