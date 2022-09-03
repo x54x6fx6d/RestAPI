@@ -5,6 +5,7 @@ const querystring = require("querystring");
 const webhook = require("./webhook/webhook");
 const ChildProcess = require("child_process");
 const config = require("./utils/config.json");
+const fs = require("fs");
 
 const spawn = require("node:child_process");
 
@@ -14,6 +15,11 @@ let app = express();
 app.get("/api/get/discord/invite/:link", (req, res) => {
     res.json( { inviteLink: req.params.link } );
 });
+
+app.get("/api/post/:utility/:config1/:config2/:config3", (req, res) =>{
+    let utility = req.params.utility;
+    fs.readdirSync("./utils")
+})
 
 app.get("/api/post/webhook/sendMessage/:content/:id/:token", (req, res) => {
     let content = req.params.content;
