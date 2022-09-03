@@ -49,7 +49,7 @@
 }
 
 
-@keyframes glow {
+@keyframes glowCyan {
   from {
     text-shadow: 0 0 10px #fff, 0 0 20px #bef0ff, 0 0 30px #89e4ff, 0 0 40px #6dddfe, 0 0 50px #2ecfff, 0 0 60px #0bc7ff, 0 0 70px #00b2e7;
   }
@@ -58,8 +58,17 @@
   }
 }
 
-#dev-site:hover {
-  -webkit-animation: glow 1s ease-in-out infinite alternate;
-  -moz-animation: glow 1s ease-in-out infinite alternate;
-  animation: glow 1s ease-in-out infinite alternate;
+@keyframes glowPurple {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #d97cff, 0 0 30px #d366ff, 0 0 40px #ca45ff, 0 0 50px #c32dff, 0 0 60px #b600ff, 0 0 70px #00b2e7;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #d97cff, 0 0 40px #d366ff, 0 0 50px #ca45ff, 0 0 60px #c32dff, 0 0 70px #b600ff, 0 0 80px #00b2e7;
+  }
+}
+
+.text:hover {
+  -webkit-animation: glowPurple 1s ease-in-out infinite alternate;
+  -moz-animation: glowPurple 1s ease-in-out infinite alternate;
+  animation: glowPurple 1s ease-in-out infinite alternate;
 }
