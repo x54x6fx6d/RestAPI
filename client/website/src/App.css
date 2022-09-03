@@ -41,6 +41,7 @@
 }
 
 #dev-site {
+  text-decoration: none;
   position: absolute;
   top: 40px;
   color: #f4f4f4;
