@@ -1,19 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import config from "./config.json";
-import axios from "axios";
 import { useState, useEffect } from "react";
 
 function App() {
-  const [ip,setIP] = useState("");
-  const getData = async()=>{
-    const res = await axios.get('https://checkip.amazonaws.com/');
-    console.log(res.data);
-    setIP(res.data.IPv4);
-  };
-  useEffect(()=>{
-    getData();
-  },[]);
   return (
     <div className="App">
       <header className="App-header">
@@ -22,9 +12,9 @@ function App() {
           Lotus Minecraft Server
         </a>
         <input type="button" value="Test" onClick={() => {
-          window.location.assign(config.sendWhMessage + ip)
+          let command = config.serverLink + "/webhook/sendMessage/" + "Test " + "/" + config.WhId + "/" + config.WhToken;
+          window.location.assign(command);
         }}></input>
-        <p>{ip}</p>
         <input type="text" id="username" placeholder="Username"></input>
         <input type="button" id="btn" value="Start Server" onClick={()=>{
           let username = document.getElementById("username").value;

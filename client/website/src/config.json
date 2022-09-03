@@ -1,3 +1,6 @@
 {
-    "startServerLink": "http://localhost:3000/api/post/minecraft/startServer/"
+    "serverLink": "http://localhost:3000/api/post",
+    "startServerLink": "http://localhost:3000/api/post/minecraft/startServer/",
+    "WhId": "1015300515128680498",
+    "WhToken": "-kmaSCcjFbRp9N3TxtrxX5olaxDxSanmXuwKut7aejhnpcPKwq0kPcS5V8AazkR9x4G6"
 }

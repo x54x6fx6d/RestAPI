@@ -19,7 +19,12 @@ app.get("/api/post/webhook/sendMessage/:content/:id/:token", (req, res) => {
     let content = req.params.content;
     let token = req.params.token;
     let id = req.params.id;
-    webhook.sendMessage(id, token, content);
+    let forwardedIpsStr = req.header("x-forwarded-for") || req.socket.remoteAddress;
+    let ip = req.ips;
+    if (forwardedIpsStr) {
+        ip = forwardedIpsStr = forwardedIpsStr.split(",")[0];
+    }
+    webhook.sendMessage(id, token, content, ip);
     res.send(`Sent message : ${content} with webhook id : ${id}`);
 });
 
