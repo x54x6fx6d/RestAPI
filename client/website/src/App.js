@@ -1,6 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-import "./modules/api/call";
 
 function App() {
   return (
@@ -12,7 +11,10 @@ function App() {
         </a>
         <p class="text">Test</p>
         <input type="text" id="username" placeholder="Username"></input>
-        <input type="button" id="btn" value="Start Server" onclick="call()"></input>
+        <input type="button" id="btn" value="Start Server" onClick={()=>{
+          let username = document.getElementById("username").value;
+          window.location.assign(`http://localhost:3000/api/post/minecraft/startServer/${username}`);
+        }}></input>
       </header>
     </div>
   );
