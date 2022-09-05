@@ -14,8 +14,8 @@ const spawn = require("node:child_process");
 let port = process.env.PORT || 3001;
 let app = express();
 
-app.get("/api/get/discord/invite/:link", (req, res) => {
-    res.json( { inviteLink: /*req.params.link*/config.invite } );
+app.get("/api/get/discord/invite", (req, res) => {
+    res.json( { message: /*req.params.link*/config.invite } );
 });
 
 app.get("/api/post/:utility/:config1/:config2/:config3", (req, res) =>{
