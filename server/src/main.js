@@ -2,7 +2,9 @@ const express = require("express");
 const bodyparser = require("body-parser");
 const url = require("url");
 const querystring = require("querystring");
-const webhook = require("./webhook/webhook");
+
+const webhook = require("./utils/discord/webhook/webhook");
+
 const ChildProcess = require("child_process");
 const config = require("./utils/config.json");
 const fs = require("fs");
@@ -13,7 +15,7 @@ let port = process.env.PORT || 3001;
 let app = express();
 
 app.get("/api/get/discord/invite/:link", (req, res) => {
-    res.json( { inviteLink: req.params.link } );
+    res.json( { inviteLink: /*req.params.link*/config.invite } );
 });
 
 app.get("/api/post/:utility/:config1/:config2/:config3", (req, res) =>{
@@ -25,11 +27,6 @@ app.get("/api/post/webhook/sendMessage/:content/:id/:token", (req, res) => {
     let content = req.params.content;
     let token = req.params.token;
     let id = req.params.id;
-    let forwardedIpsStr = req.header("x-forwarded-for") || req.socket.remoteAddress;
-    let ip = req.ips;
-    if (forwardedIpsStr) {
-        ip = forwardedIpsStr = forwardedIpsStr.split(",")[0];
-    }
     webhook.sendMessage(id, token, content, ip);
     res.send(`Sent message : ${content} with webhook id : ${id}`);
 });
