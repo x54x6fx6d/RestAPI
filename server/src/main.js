@@ -8,13 +8,17 @@ const webhook = require("./utils/discord/webhook/webhook");
 const ChildProcess = require("child_process");
 const config = require("./utils/config.json");
 const fs = require("fs");
+const cors = require("cors");
 
 const spawn = require("node:child_process");
 
 let port = process.env.PORT || 3001;
 let app = express();
 
+app.use(cors());
+
 app.get("/api/get/discord/invite", (req, res) => {
+    console.dir({ message: config.invite });
     res.json( { message: /*req.params.link*/config.invite } );
 });
 

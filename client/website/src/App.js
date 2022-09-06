@@ -7,9 +7,19 @@ function App() {
   const [data, setData] = React.useState(null);
 
   React.useEffect(() => {
-    fetch("/api")
+    const init = async() => {
+      let req = await fetch("http://localhost:3001/api/get/discord/invite");
+      console.dir(req);
+      let past = await req.json();
+      console.dir(past);
+      setData(old=>past);
+    }
+    /*
+    fetch("http://localhost:3001/api/get/discord/invite")
       .then((res) => res.json())
-      .then((data) => setData(data.message));
+      .then((data) => setData(old=>data.message));
+      */
+     init();
   }, []);
   return (
     <div className="App">
@@ -18,12 +28,7 @@ function App() {
         <a id="dev-site" class="text" href="https://tommy31.social/">
           Lotus Minecraft Server
         </a>
-        <p id="inviteLink">{!data ? "Loading..." : data}</p>
-        <button onClick={() => {
-          let iL = document.getElementById("inviteLink");
-          let a = toString(data);
-          iL.innerHTML = toString({data});
-        }}>Get Invite Link</button>
+        <p id="inviteLink">{!data ? "Loading..." : "https://discord.gg/" + data?.message}</p>
         <input type="button" value="Test" onClick={() => {
           let command = config.serverLink + "/webhook/sendMessage/" + "Test " + "/" + config.WhId + "/" + config.WhToken;
           window.location.assign(command);
